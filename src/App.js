@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Switch, Route } from "react-router-dom";
+import Home from "./Components/Home";
+import { Flex, Text } from "@chakra-ui/react";
+import ArrayComponent from "./Components/ArrayComponent";
+import ObjectComponent from "./Components/ObjectComponent";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Flex justifyContent="center" mt="5%">
+        <Text color="#2c3e50" fontSize="6xl" fontFamily="monospace">
+          Js-Essentials
+        </Text>
+      </Flex>
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="/array" component={ArrayComponent} exact />
+        <Route path="/object" component={ObjectComponent} exact />
+      </Switch>
+    </>
   );
 }
 

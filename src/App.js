@@ -3,6 +3,7 @@ import Home from "./Components/Home";
 import { Flex, Text } from "@chakra-ui/react";
 import ArrayComponent from "./Components/ArrayComponent";
 import ObjectComponent from "./Components/ObjectComponent";
+import ArrayPageComponent from './Components/ArrayPageComponent'
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/array" component={ArrayComponent} exact />
+        <Route path="/array/view/:page" component={ArrayPageComponent} exact />
         <Route path="/object" component={ObjectComponent} exact />
       </Switch>
     </>

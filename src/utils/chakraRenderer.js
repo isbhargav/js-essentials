@@ -1,5 +1,5 @@
 //https://github.com/mustaphaturhan/chakra-ui-markdown-renderer/blob/master/src/index.js
-import React from 'react';
+import React from "react";
 import {
   Text,
   Code,
@@ -10,39 +10,45 @@ import {
   ListItem,
   Heading,
   Image,
-} from '@chakra-ui/react';
+  Box,
+} from "@chakra-ui/react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import {
+  tomorrow,
+  materialOceanic,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
+
+const CodeBlock = ({ language, value }) => {
+  return (
+    <Box marginBottom={50}>
+      <SyntaxHighlighter language={language} style={materialOceanic}>
+        {value}
+      </SyntaxHighlighter>
+    </Box>
+  );
+};
 
 function getCoreProps(props) {
-  return props['data-sourcepos']
-    ? { 'data-sourcepos': props['data-sourcepos'] }
+  return props["data-sourcepos"]
+    ? { "data-sourcepos": props["data-sourcepos"] }
     : {};
 }
 
 export const defaults = {
-  paragraph: props => {
+  paragraph: (props) => {
     const { children } = props;
     return <Text mb={2}>{children}</Text>;
   },
-  emphasis: props => {
+  emphasis: (props) => {
     const { children } = props;
     return <Text as="em">{children}</Text>;
   },
-  blockquote: props => {
+  blockquote: (props) => {
     const { children } = props;
     return <Code p={2}>{children}</Code>;
   },
-  code: props => {
-    const { language, value } = props;
-    const className = language && `language-${language}`;
-    return (
-      <pre {...getCoreProps(props)}>
-        <Code p={2} className={className || null}>
-          {value}
-        </Code>
-      </pre>
-    );
-  },
-  delete: props => {
+  code: CodeBlock,
+  delete: (props) => {
     const { children } = props;
     return <Text as="del">{children}</Text>;
   },
@@ -51,23 +57,23 @@ export const defaults = {
   img: Image,
   linkReference: Link,
   imageReference: Image,
-  text: props => {
+  text: (props) => {
     const { children } = props;
     return <Text as="span">{children}</Text>;
   },
-  list: props => {
+  list: (props) => {
     const { start, ordered, children, depth } = props;
     const attrs = getCoreProps(props);
     if (start !== null && start !== 1 && start !== undefined) {
       attrs.start = start.toString();
     }
-    let styleType = 'disc';
-    if (ordered) styleType = 'decimal';
-    if (depth === 1) styleType = 'circle';
+    let styleType = "disc";
+    if (ordered) styleType = "decimal";
+    if (depth === 1) styleType = "circle";
     return (
       <List
         spacing={24}
-        as={ordered ? 'ol' : 'ul'}
+        as={ordered ? "ol" : "ul"}
         styleType={styleType}
         pl={4}
         {...attrs}
@@ -76,7 +82,7 @@ export const defaults = {
       </List>
     );
   },
-  listItem: props => {
+  listItem: (props) => {
     const { children, checked } = props;
     let checkbox = null;
     if (checked !== null && checked !== undefined) {
@@ -89,19 +95,19 @@ export const defaults = {
     return (
       <ListItem
         {...getCoreProps(props)}
-        listStyleType={checked !== null ? 'none' : 'inherit'}
+        listStyleType={checked !== null ? "none" : "inherit"}
       >
         {checkbox || children}
       </ListItem>
     );
   },
   definition: () => null,
-  heading: props => {
+  heading: (props) => {
     const { level, children } = props;
-    const sizes = ['2xl', 'xl', 'lg', 'md', 'sm', 'xs'];
+    const sizes = ["2xl", "xl", "lg", "md", "sm", "xs"];
     return (
       <Heading
-        my={4}
+        fontFamily="monospace"
         as={`h${level}`}
         size={sizes[`${level - 1}`]}
         {...getCoreProps(props)}
@@ -110,7 +116,7 @@ export const defaults = {
       </Heading>
     );
   },
-  inlineCode: props => {
+  inlineCode: (props) => {
     const { children } = props;
     return <Code {...getCoreProps(props)}>{children}</Code>;
   },

@@ -10,23 +10,9 @@ import {
   ListItem,
   Heading,
   Image,
-  Box,
 } from "@chakra-ui/react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import {
-  tomorrow,
-  materialOceanic,
-} from "react-syntax-highlighter/dist/esm/styles/prism";
-
-const CodeBlock = ({ language, value }) => {
-  return (
-    <Box marginBottom={50}>
-      <SyntaxHighlighter language={language} style={materialOceanic}>
-        {value}
-      </SyntaxHighlighter>
-    </Box>
-  );
-};
+// import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { CodeBlock } from "./CodeBlock";
 
 function getCoreProps(props) {
   return props["data-sourcepos"]

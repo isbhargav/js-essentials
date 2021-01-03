@@ -1,5 +1,6 @@
 import { VStack, Box, Text, Heading, Flex } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+
 const options = [
   { title: "Add", desc: "Add element to the array", val: "add" },
   { title: "Remove", desc: "Remove element from the array", val: "remove" },

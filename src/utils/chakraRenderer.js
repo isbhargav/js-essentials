@@ -23,7 +23,11 @@ function getCoreProps(props) {
 export const defaults = {
   paragraph: (props) => {
     const { children } = props;
-    return <Text mb={2}>{children}</Text>;
+    return (
+      <Text fontFamily="monospace" fontSize="lg" mb={2}>
+        {children}
+      </Text>
+    );
   },
   emphasis: (props) => {
     const { children } = props;

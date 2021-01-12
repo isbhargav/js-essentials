@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import chakraRenderer from "../utils/chakraRenderer";
 import { Stack, Box } from "@chakra-ui/react";
+import Loading from "./Loading";
 
 export default function PageComponent({ fileName }) {
   const { page } = useParams();
@@ -11,6 +12,7 @@ export default function PageComponent({ fileName }) {
   // console.log("You are on Page ", page);
   const [data, setData] = useState();
   useEffect(() => {
+    setLoading(true);
     fetch(fileName)
       .then((data) => data.text())
       .then((data) => {
@@ -18,7 +20,7 @@ export default function PageComponent({ fileName }) {
         setLoading(false);
       });
   }, [page, fileName]);
-  if (loading) return "...Loading";
+  if (loading) return <Loading />;
   return (
     <>
       <Box mt={50}></Box>

@@ -2,6 +2,28 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Design Docs
+
+- Store all the articles in markdown files so that its easy to write those documents and format them.
+- Use Markdown renderer to render your markdown files as HTML or JSX.
+- Use React to get interactive website up and navigate those pages.
+- Use Router to separate each Page in a way that makes sense.
+
+# Technologies learned for this project
+
+- React
+- React Hooks
+- Chakra UI
+- Markdown renderer
+- Hilightjs
+- React Router
+
+# My thoughts after the project
+
+The use case for this website fits very nicely with static site generation So its better to use SSG frame works like Nextjs or Gastbay because when you add new data to you site with SSG it can create pages which can be cached by browsers.
+
+So Essentially I think that because we are fetching data from markdown files to generate pages for our site we can use SSG framework which can generate those pages at build time and make use of caching by browser.
+
 ## Available Scripts
 
 In the project directory, you can run:

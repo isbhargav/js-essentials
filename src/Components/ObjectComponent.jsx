@@ -26,7 +26,7 @@ export default function ObjectComponent() {
             mt="30px"
             justifyContent="space-between"
             _hover={{ border: "1px solid black" }}
-            onClick={() => history.push("/array/" + o.val)}
+            onClick={() => history.push("/object/view/" + o.val)}
           >
             <Box>
               <Heading size="xl" fontFamily="monospace">
